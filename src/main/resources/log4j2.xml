@@ -20,8 +20,8 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="JDBC" additivity="true">
-            <appender-ref ref="fileLogger" level="warn"/>
+        <Logger name="BDExchange" additivity="true">
+            <appender-ref ref="fileLogger" level="error"/>
         </Logger>
         <Root level="info">
             <AppenderRef ref="console"/>

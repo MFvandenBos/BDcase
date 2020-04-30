@@ -1,5 +1,5 @@
 package BDExchange.Domain;
 
 public enum WelcomeOptions {
-    Login, Register, Quit
+    Quit, Login, Register
 }

@@ -18,8 +18,11 @@ public class App {
     }
 
     private void start() {
+        // Show welcome menu and save the chosen option
         int choice = welcomeMenu();
-        log.info(WelcomeOptions.values()[choice] + " has been selected.");
+
+        // Show selected menu
+        // menuManager
 
 
 //        EntityManager em = Persistence.createEntityManagerFactory("MySQL").createEntityManager();
@@ -31,17 +34,25 @@ public class App {
         int selection;
         Scanner input = new Scanner(System.in);
 
-        log.info("Welcome <Guest> to BD Exchange!");
+        log.info("Welcome <Guest> to the BD Exchange!");
         log.info("You need to be logged in to be able to view the contents of this website!\n");
 
-        log.info("Please input the number to make your choice.");
-        log.info(WelcomeOptions.Login.ordinal() + " - " + WelcomeOptions.Login);
-        log.info(WelcomeOptions.Register.ordinal() + " - " + WelcomeOptions.Register);
-        log.info(WelcomeOptions.Quit.ordinal() + " - " + WelcomeOptions.Quit);
+        while(true) {
+            log.info("Please input the number to make your choice.");
+            for (WelcomeOptions value : WelcomeOptions.values()) {
+                log.info(value.ordinal() + " - " + value);
+            }
 
-        selection = input.nextInt();
-        return selection;
-        // TODO index out of bounds exception handling
+            selection = input.nextInt();
+
+            try {
+                log.info(WelcomeOptions.values()[selection] + " has been selected.");
+                return selection;
+            } catch (Exception e) {
+                log.error("Menu option not found!");
+                log.error("Please enter a correct number.\n");
+            }
+        }
     }
 }
 
