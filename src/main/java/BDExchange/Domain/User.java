@@ -13,7 +13,7 @@ public class User {
     private String emailaddress;
     private String password;
 
-    private User() { }
+    public User() { }
     public User(String emailaddress, String password) {
         this.emailaddress = emailaddress;
         this.password = password;
