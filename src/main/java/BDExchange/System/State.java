@@ -17,6 +17,10 @@ public abstract class State {
         return scanner.getNextLine();
     }
 
+    protected void changeState(String option) {
+        stateManager.changeState(option);
+    }
+
     public abstract void updateState();
 
     public List<String> getOptionList() { return optionList; }

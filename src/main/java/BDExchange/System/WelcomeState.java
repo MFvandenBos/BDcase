@@ -38,8 +38,4 @@ public class WelcomeState extends State {
             }
         }
     }
-
-    private void changeState(String option) {
-        stateManager.changeState(option);
-    }
 }
