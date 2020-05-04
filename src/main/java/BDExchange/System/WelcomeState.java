@@ -5,10 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class WelcomeState extends State {
     Logger log = LoggerFactory.getLogger(WelcomeState.class);
-
-    public WelcomeState(StateManager stateManager, String... options) {
-        super(stateManager, options);
-    }
+    public WelcomeState(StateManager stateManager, String... options) { super(stateManager, options); }
 
     @Override
     public void updateState() {

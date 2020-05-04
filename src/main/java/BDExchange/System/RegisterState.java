@@ -9,7 +9,6 @@ import javax.persistence.Persistence;
 
 public class RegisterState extends State{
     Logger log = LoggerFactory.getLogger(RegisterState.class);
-
     public RegisterState(StateManager stateManager, String... options) {
         super(stateManager, options);
     }

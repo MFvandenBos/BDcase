@@ -3,12 +3,16 @@ package BDExchange.Dao;
 import BDExchange.Domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import javax.inject.Inject;
 
 import javax.persistence.EntityManager;
 
 public class UserDao {
     Logger log = LoggerFactory.getLogger(UserDao.class);
-    private final EntityManager em;
+
+    @Inject
+    private EntityManager em;
+    public UserDao() {}
     public UserDao(EntityManager em) { this.em = em; }
 
         public boolean insert(User newUser) {

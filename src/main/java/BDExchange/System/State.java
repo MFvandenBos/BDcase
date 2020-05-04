@@ -23,6 +23,5 @@ public abstract class State {
 
     public abstract void updateState();
 
-    public List<String> getOptionList() { return optionList; }
     public void setScanner(ScannerWrapper input) { this.scanner = input; }
 }
