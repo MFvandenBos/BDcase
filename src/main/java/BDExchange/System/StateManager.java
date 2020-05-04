@@ -13,22 +13,32 @@ public class StateManager {
         WelcomeState welcomeState = new WelcomeState( this,"Login", "Register", "Quit");
         RegisterState registerState = new RegisterState(this);
 
-        // Map state options to states
-        statesByOptionsMap.put("Welcome", welcomeState);
-        statesByOptionsMap.put("Register", registerState);
+        // Map options to states
+        addToMap("Welcome", welcomeState);
+        addToMap("Register", registerState);
 
         // Set first state to welcome state
         changeState(welcomeState);
+        updateState();
+    }
+
+    public void addToMap(String option, State state) {
+        statesByOptionsMap.put(option, state);
     }
 
     public void changeState(State state) {
         currentState = state;
-        currentState.updateState();
     }
 
     public void changeState(String option) {
         changeState(statesByOptionsMap.getOrDefault(option, currentState));
+        updateState();
     }
+
+    public void updateState() {
+        currentState.updateState();
+    }
+
 
     public State getCurrentState() {
         return currentState;
