@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WelcomeState extends State {
-    Logger log = LoggerFactory.getLogger(WelcomeState.class);
+//    Logger log = LoggerFactory.getLogger(WelcomeState.class);
     public WelcomeState(StateManager stateManager, String... options) { super(stateManager, options); }
 
     @Override
@@ -16,7 +16,7 @@ public class WelcomeState extends State {
         log.warn("You need to log in to be able to browse all available items!\n");
 
         while(selecting) {
-            log.warn("\nPlease select an option to continue...");
+            log.warn("Please select an option to continue...");
             for (String option : optionList) {
                 log.warn(option);
             }
@@ -24,9 +24,8 @@ public class WelcomeState extends State {
             try {
                 selection = getInput();
                 if(optionList.contains(selection)) {
-                    log.warn("<" + selection + "> has been selected!");
-                    changeState(selection);
                     selecting = false;
+                    changeState(selection);
                 } else {
                     log.error("<" + selection + "> is not a valid option. Please input the option correctly (Case sensitive).");
                 }

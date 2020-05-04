@@ -6,6 +6,8 @@ import org.slf4j.LoggerFactory;
 import javax.inject.Inject;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class UserDao {
     Logger log = LoggerFactory.getLogger(UserDao.class);
@@ -15,7 +17,7 @@ public class UserDao {
     public UserDao() {}
     public UserDao(EntityManager em) { this.em = em; }
 
-        public boolean insert(User newUser) {
+    public boolean insert(User newUser) {
         try {
             em.getTransaction().begin();
             em.persist(newUser);
@@ -27,5 +29,24 @@ public class UserDao {
         }
     }
 
+    public User getUserByID(int id) {
+        return em.find(User.class, id);
+    }
 
+    public User getUserByEmail(String emailaddress) {
+        TypedQuery<User> query = em.createQuery(
+                "SELECT u FROM User u WHERE u.emailaddress = :firstarg", User.class
+        );
+        query.setParameter("firstarg", emailaddress);
+        return query.getSingleResult();
+    }
+
+    public User getUserByEmailAndPassword(String emailaddress, String password) {
+        TypedQuery<User> query = em.createQuery(
+                "SELECT u FROM User u WHERE u.emailaddress = :firstarg AND u.password = :secondarg", User.class
+        );
+        query.setParameter("firstarg", emailaddress);
+        query.setParameter("secondarg", password);
+        return query.getSingleResult();
+    }
 }

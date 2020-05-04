@@ -27,4 +27,16 @@ public class User {
         return "Username = " + emailaddress +
                 ", password =" + password;
     }
+
+    public String getEmailaddress() {
+        return emailaddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int getId() {
+        return id;
+    }
 }

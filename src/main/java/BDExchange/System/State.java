@@ -1,5 +1,8 @@
 package BDExchange.System;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,6 +10,7 @@ public abstract class State {
     protected final List<String> optionList;
     protected final StateManager stateManager;
     ScannerWrapper scanner = new ScannerWrapper();
+    Logger log = LoggerFactory.getLogger(State.class);
 
     public State(StateManager stateManager, String... options) {
         this.stateManager = stateManager;

@@ -12,19 +12,18 @@ import javax.persistence.EntityTransaction;
 
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class UserDaoTest {
 
-    @Mock EntityManager emMock;
+    @Mock EntityManager entityManagerMock;
     @Mock EntityTransaction entityTransactionMock;
     @InjectMocks UserDao dao = new UserDao();
 
     @Test @DisplayName("Test if user is persisted.")
     void whenInsertIsCalledTheTransactionBeginsAndIsCommitted() {
         // given
-        when(emMock.getTransaction()).thenReturn(entityTransactionMock);
+        when(entityManagerMock.getTransaction()).thenReturn(entityTransactionMock);
         doNothing().when(entityTransactionMock).begin();
         doNothing().when(entityTransactionMock).commit();
 
@@ -32,10 +31,9 @@ class UserDaoTest {
         dao.insert(new User());
 
         // then
-        verify(emMock).persist(isA(User.class));
-        verify(emMock, atLeastOnce()).getTransaction();
+        verify(entityManagerMock).persist(isA(User.class));
+        verify(entityManagerMock, atLeastOnce()).getTransaction();
         verify(entityTransactionMock).begin();
         verify(entityTransactionMock).commit();
     }
-
 }

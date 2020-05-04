@@ -28,6 +28,8 @@ public class RegisterState extends State{
             log.warn("Please enter a password for your user account. Note that passwords are case-sensitive.");
             password = getInput();
 
+            // TODO Check if emailaddress already exists
+            // TODO Encrypt password.
             if(userDao.insert(new User(emailAddress, password))) {
                 log.warn("\nWelcome " + emailAddress + "!\n\n" +
                         "your DB Exchange account has been created!\n" +
