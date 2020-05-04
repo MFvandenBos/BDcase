@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import java.util.Scanner;
 
 public class RegisterState extends State{
     Logger log = LoggerFactory.getLogger(RegisterState.class);
@@ -19,7 +18,6 @@ public class RegisterState extends State{
     public void updateState() {
         EntityManager em = Persistence.createEntityManagerFactory("MySQL").createEntityManager();
         UserDao userDao = new UserDao(em);
-        Scanner input = new Scanner(System.in);
         boolean selecting = true;
 
         String emailAddress;
@@ -27,9 +25,9 @@ public class RegisterState extends State{
 
         while(selecting) {
             log.warn("\nPlease enter a valid email address for your user account:");
-            emailAddress = input.nextLine();
+            emailAddress = getInput();
             log.warn("Please enter a password for your user account. Note that passwords are case-sensitive.");
-            password = input.nextLine();
+            password = getInput();
 
             if(userDao.insert(new User(emailAddress, password))) {
                 log.warn("\nWelcome " + emailAddress + "!\n\n" +
