@@ -10,8 +10,6 @@ public class ScannerWrapper {
     }
 
     public int getNextInt() {
-        int input = scanner.nextInt();
-        scanner.nextLine();
-        return input;
+        return Integer.parseInt(scanner.nextLine());
     }
 }

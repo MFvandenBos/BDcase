@@ -29,6 +29,7 @@ public class User {
     List<DeliveryOptions> deliveryOptions = new ArrayList<>();
 
     public User() { }
+    // TODO change so constructor needs a list.
     public User(String emailaddress, String password, DeliveryOptions... options) {
         this.emailaddress = emailaddress;
         this.password = password;

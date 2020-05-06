@@ -49,11 +49,12 @@ public class RegisterState extends State{
         stateManager.changeAndUpdateState("Welcome");
     }
 
+    // TODO change so method returns a List to input into constructor
     public DeliveryOptions[] selectedDeliveryOptions() {
         List<DeliveryOptions> opt = new ArrayList<>();
-
         int selection;
         boolean selecting = true;
+
         while(selecting) {
             log.warn("\nPlease select the number of a delivery option to add it your list.");
             showNumberedOptionList();
@@ -64,6 +65,8 @@ public class RegisterState extends State{
                     if(opt.contains(DeliveryOptions.values()[selection])) {
                         log.error("This delivery option has already been added to the list!");
                     } else {
+                        // TODO Handle 'Thuis Afhalen' so that user is prompted to add an address.
+
                         log.warn(DeliveryOptions.values()[selection].name() + " added!\n");
                         opt.add(DeliveryOptions.values()[selection]);
 
@@ -74,7 +77,8 @@ public class RegisterState extends State{
 
                         log.warn("Would you like to select another delivery option?");
                         log.warn("[1] YES  |  [2] NO");
-                        selection = scanner.getNextInt();
+                        // TODO loop this question if the input is incorrect.
+                        selection = getInputInteger();
                         if(selection != 1) { selecting = false;}
                     }
                 } else {

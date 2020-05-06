@@ -19,7 +19,10 @@ public abstract class State {
     public String getInputString() {
         return scanner.getNextLine();
     }
-    public int getInputInteger() { return scanner.getNextInt(); }
+
+    public int getInputInteger() {
+        return scanner.getNextInt();
+    }
 
     public void showNumberedOptionList() {
         for(int i = 0; i < optionList.size(); i++) {

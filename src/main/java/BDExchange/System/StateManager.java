@@ -15,14 +15,16 @@ public class StateManager {
     public void initialize() {
         // initialize all states
         WelcomeState welcomeState = new WelcomeState( this,"Login", "Register", "Exit");
+
         RegisterState registerState = new RegisterState(this,
                 DeliveryOptions.values()[0].name(),
                 DeliveryOptions.values()[1].name(),
                 DeliveryOptions.values()[2].name(),
                 DeliveryOptions.values()[3].name());
+
         ExitState exitState = new ExitState(this);
         LoginState loginState = new LoginState(this, "LoggedOnState");
-        LoggedOnState loggedonState = new LoggedOnState(this, "Option 1", "Option 2", "Option 3");
+        LoggedOnState loggedonState = new LoggedOnState(this, "Products", "Wishlist");
 
         // Map options to states
         addToMap("Welcome", welcomeState);
