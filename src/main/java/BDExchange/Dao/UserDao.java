@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import java.util.List;
 
 public class UserDao {
     Logger log = LoggerFactory.getLogger(UserDao.class);
@@ -23,23 +22,28 @@ public class UserDao {
             em.persist(newUser);
             em.getTransaction().commit();
             return true;
-        } catch (Exception e) {
+        } catch (javax.persistence.RollbackException r) {
+            log.error("The email address you have entered is already in use! Please try a different email address.");
+            return false;
+        }
+        catch (Exception e) {
             log.error("An error has occurred while inserting a new user into the database: " + e.getMessage());
             return false;
         }
     }
 
-    public User getUserByID(int id) {
-        return em.find(User.class, id);
-    }
-
-    public User getUserByEmail(String emailaddress) {
-        TypedQuery<User> query = em.createQuery(
-                "SELECT u FROM User u WHERE u.emailaddress = :firstarg", User.class
-        );
-        query.setParameter("firstarg", emailaddress);
-        return query.getSingleResult();
-    }
+//    TODO Currently not used. - Flagged for removal.
+//    public User getUserByID(int id) {
+//        return em.find(User.class, id);
+//    }
+//
+//    public User getUserByEmail(String emailaddress) {
+//        TypedQuery<User> query = em.createQuery(
+//                "SELECT u FROM User u WHERE u.emailaddress = :firstarg", User.class
+//        );
+//        query.setParameter("firstarg", emailaddress);
+//        return query.getSingleResult();
+//    }
 
     public User getUserByEmailAndPassword(String emailaddress, String password) {
         TypedQuery<User> query = em.createQuery(

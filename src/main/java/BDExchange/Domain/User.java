@@ -1,8 +1,8 @@
 package BDExchange.Domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
@@ -12,6 +12,8 @@ public class User {
     private int id;
 
     @Email(message = "Email must be valid")
+    @Column(unique=true)
+    @Length(max = 100)
     private String emailaddress;
 
     private String password;

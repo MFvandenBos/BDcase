@@ -14,7 +14,7 @@ public class StateManager {
     public void initialize() {
         // initialize all states
         WelcomeState welcomeState = new WelcomeState( this,"Login", "Register", "Exit");
-        RegisterState registerState = new RegisterState(this, "Welcome");
+        RegisterState registerState = new RegisterState(this);
         ExitState exitState = new ExitState(this);
         LoginState loginState = new LoginState(this, "LoggedOnState");
         LoggedOnState loggedonState = new LoggedOnState(this, "Option 1", "Option 2", "Option 3");
@@ -34,12 +34,10 @@ public class StateManager {
     public void addToMap(String option, State state) {
         statesByOptionsMap.put(option, state);
     }
-
     public void changeState(State state) {
         currentState = state;
     }
-
-    public void changeState(String option) {
+    public void changeAndUpdateState(String option) {
         changeState(statesByOptionsMap.getOrDefault(option, currentState));
         updateState();
     }

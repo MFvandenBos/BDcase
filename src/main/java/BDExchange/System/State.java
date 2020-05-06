@@ -2,7 +2,6 @@ package BDExchange.System;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,7 +21,7 @@ public abstract class State {
     }
 
     protected void changeState(String option) {
-        stateManager.changeState(option);
+        stateManager.changeAndUpdateState(option);
     }
 
     public abstract void updateState();

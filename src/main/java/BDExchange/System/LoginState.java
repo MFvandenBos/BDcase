@@ -5,7 +5,6 @@ import BDExchange.Domain.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import java.sql.Statement;
 
 public class LoginState extends State {
     public LoginState(StateManager stateManager, String... options) {
@@ -40,6 +39,6 @@ public class LoginState extends State {
                         "Don't forget that the password is case sensitive.");
             }
         }
-         stateManager.changeState("LoggedOnState");
+         stateManager.changeAndUpdateState("LoggedOnState");
     }
 }

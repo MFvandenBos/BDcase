@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class WelcomeState extends State {
-//    Logger log = LoggerFactory.getLogger(WelcomeState.class);
+    Logger log = LoggerFactory.getLogger(WelcomeState.class);
     public WelcomeState(StateManager stateManager, String... options) { super(stateManager, options); }
 
     @Override
@@ -12,7 +12,7 @@ public class WelcomeState extends State {
         String selection;
         boolean selecting = true;
 
-        log.warn("Welcome <Guest> to the BD Exchange!");
+        log.warn("Welcome to the BD Exchange!");
         log.warn("You need to log in to be able to browse all available items!\n");
 
         while(selecting) {
@@ -21,6 +21,7 @@ public class WelcomeState extends State {
                 log.warn(option);
             }
 
+            // TODO Duplicate code in else{} and catch(Exception e). Needs refactoring.
             try {
                 selection = getInput();
                 if(optionList.contains(selection)) {

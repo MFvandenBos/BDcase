@@ -7,7 +7,7 @@ public class LoggedOnState extends State {
 
     @Override
     public void updateState() {
-        log.warn("Hello " + StateManager.loggedInUser.getEmailaddress() + ". You are now logged in.\n\n");
+        log.warn("Welcome " + StateManager.loggedInUser.getEmailaddress() + " to the BD Exchange!");
 
         log.warn("Please select an option to continue...");
         for (String option : optionList) {
