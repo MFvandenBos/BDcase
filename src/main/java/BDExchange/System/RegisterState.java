@@ -24,13 +24,12 @@ public class RegisterState extends State{
 
         String emailAddress;
         String password;
-        DeliveryOptions[] selectedOptions = new DeliveryOptions[4];
+        DeliveryOptions[] selectedOptions;
 
         while(selecting) {
             log.warn("\nPlease enter a valid email address for your user account:");
             emailAddress = getInputString();
-            log.warn("\nPlease enter a password for your user account. Note that passwords are case-sensitive.");
-            password = getInputString();
+            password = "password123";
 
             // TODO use batching to check if email already exists before continueing.
             log.warn("\nTo complete your registration you must select which delivery options you support.\n");
@@ -40,7 +39,7 @@ public class RegisterState extends State{
                 log.warn("\nWelcome " + emailAddress + "!\n\n" +
                         "your DB Exchange account has been created!\n" +
                         "your password = '" + password + "' \n" +
-                        "you are now able to log in and browse all available goods.\n\n" +
+                        "you are now able to log in and browse all items.\n\n" +
                         "-The DB Exchange team.\n\n");
                 selecting = false;
             } else {
@@ -51,12 +50,12 @@ public class RegisterState extends State{
     }
 
     public DeliveryOptions[] selectedDeliveryOptions() {
-        List<DeliveryOptions> opt = new ArrayList<DeliveryOptions>();
+        List<DeliveryOptions> opt = new ArrayList<>();
 
         int selection;
         boolean selecting = true;
         while(selecting) {
-            log.warn("\nPlease select the number of a delivery option to add it your list. Or to exit if you are finished selecting delivery options.");
+            log.warn("\nPlease select the number of a delivery option to add it your list.");
             showNumberedOptionList();
 
             try{

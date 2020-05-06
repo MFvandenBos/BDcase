@@ -10,7 +10,7 @@ public class StateManager {
 
     private State currentState;
     final static Map<String, State> statesByOptionsMap = new HashMap<>();
-    public static User loggedInUser;
+    private User loggedInUser;
 
     public void initialize() {
         // initialize all states
@@ -54,4 +54,6 @@ public class StateManager {
     public State getCurrentState() {
         return currentState;
     }
+    public User getLoggedInUser() { return loggedInUser; }
+    protected void setLoggedInUser(User loggedInUser) { this.loggedInUser = loggedInUser; }
 }

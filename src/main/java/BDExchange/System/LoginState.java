@@ -30,7 +30,8 @@ public class LoginState extends State {
                 User user = userDao.getUserByEmailAndPassword(emailAddress, password);
                 if(user != null) {
                     loggingIn = false;
-                    StateManager.loggedInUser = user;
+                    stateManager.setLoggedInUser(user);
+                    // TODO flagged for removal
                     log.warn("\n\n\n\n\n\n\n\n\n\n\n\n");
                 }
             }catch(Exception e) {
