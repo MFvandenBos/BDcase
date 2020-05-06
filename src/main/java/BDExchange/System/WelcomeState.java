@@ -23,7 +23,7 @@ public class WelcomeState extends State {
 
             // TODO Duplicate code in else{} and catch(Exception e). Needs refactoring.
             try {
-                selection = getInput();
+                selection = getInputString();
                 if(optionList.contains(selection)) {
                     selecting = false;
                     changeState(selection);

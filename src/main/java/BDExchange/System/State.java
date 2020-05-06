@@ -16,8 +16,15 @@ public abstract class State {
         optionList = Arrays.asList(options);
     }
 
-    public String getInput() {
+    public String getInputString() {
         return scanner.getNextLine();
+    }
+    public int getInputInteger() { return scanner.getNextInt(); }
+
+    public void showNumberedOptionList() {
+        for(int i = 0; i < optionList.size(); i++) {
+            log.warn("[" + i + "] " +  optionList.get(i));
+        }
     }
 
     protected void changeState(String option) {

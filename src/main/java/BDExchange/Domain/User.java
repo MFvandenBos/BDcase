@@ -4,6 +4,11 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static javax.persistence.CascadeType.MERGE;
 
 @Entity
 public class User {
@@ -18,10 +23,16 @@ public class User {
 
     private String password;
 
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "User_delivery_options", joinColumns = @JoinColumn(name = "userid"))
+    @Column(name = "deliveryoptions")
+    List<DeliveryOptions> deliveryOptions = new ArrayList<>();
+
     public User() { }
-    public User(String emailaddress, String password) {
+    public User(String emailaddress, String password, DeliveryOptions... options) {
         this.emailaddress = emailaddress;
         this.password = password;
+        deliveryOptions = Arrays.asList(options);
     }
 
     @Override

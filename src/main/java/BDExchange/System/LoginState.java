@@ -22,9 +22,9 @@ public class LoginState extends State {
 
         while(loggingIn) {
             log.warn("\nPlease enter your email address.");
-            emailAddress = getInput();
+            emailAddress = getInputString();
             log.warn("Please enter your password. Note that passwords are case-sensitive.");
-            password = getInput();
+            password = getInputString();
 
             try{
                 User user = userDao.getUserByEmailAndPassword(emailAddress, password);

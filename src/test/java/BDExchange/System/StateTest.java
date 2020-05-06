@@ -17,7 +17,7 @@ class StateTest {
 
         // When
         when(scannerMock.getNextLine()).thenReturn("testInput");
-        String actualResult = state.getInput();
+        String actualResult = state.getInputString();
 
         // Then
         assertEquals("testInput", actualResult);
