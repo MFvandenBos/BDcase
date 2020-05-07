@@ -11,7 +11,7 @@ class StateManagerTest {
     public void whenChangeStateIsCalledCurrentStateShouldReturnNewState() {
         // Given
         StateManager stateManager = new StateManager();
-        WelcomeState oldState = new WelcomeState(stateManager, "Test");
+        HomeState oldState = new HomeState(stateManager, "Test");
         RegisterState newState = new RegisterState(stateManager, "Test");
 
         // When

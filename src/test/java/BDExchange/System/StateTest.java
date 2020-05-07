@@ -12,7 +12,7 @@ class StateTest {
     public void whenGetInputIsCalledReturnTestInput() {
         // Given
         ScannerWrapper scannerMock = mock(ScannerWrapper.class);
-        WelcomeState state = new WelcomeState(new StateManager());
+        HomeState state = new HomeState(new StateManager());
         state.setScanner(scannerMock);
 
         // When

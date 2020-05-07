@@ -31,8 +31,6 @@ public class LoginState extends State {
                 if(user != null) {
                     loggingIn = false;
                     stateManager.setLoggedInUser(user);
-                    // TODO flagged for removal
-                    log.warn("\n\n\n\n\n\n\n\n\n\n\n\n");
                 }
             }catch(Exception e) {
                 log.error("You have entered an invalid email address or password. " +

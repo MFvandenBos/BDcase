@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static javax.persistence.CascadeType.MERGE;
 
 @Entity
 public class User {
@@ -22,6 +21,7 @@ public class User {
     private String emailaddress;
 
     private String password;
+    private String livingAddress;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "User_delivery_options", joinColumns = @JoinColumn(name = "userid"))
@@ -29,11 +29,11 @@ public class User {
     List<DeliveryOptions> deliveryOptions = new ArrayList<>();
 
     public User() { }
-    // TODO change so constructor needs a list.
-    public User(String emailaddress, String password, DeliveryOptions... options) {
+    public User(String emailaddress, String password, String livingAddress, List<DeliveryOptions> deliveryOptionsList) {
         this.emailaddress = emailaddress;
         this.password = password;
-        deliveryOptions = Arrays.asList(options);
+        this.livingAddress = livingAddress;
+        deliveryOptions = deliveryOptionsList;
     }
 
     @Override

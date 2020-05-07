@@ -23,7 +23,7 @@ public class UserDao {
             em.getTransaction().commit();
             return true;
         } catch (javax.persistence.RollbackException r) {
-            log.error("The email address you have entered is already in use! Please try a different email address.");
+            log.error("The email address you have entered is invalid! Please try a different email address.");
             return false;
         }
         catch (Exception e) {
@@ -31,19 +31,6 @@ public class UserDao {
             return false;
         }
     }
-
-//    TODO Currently not used. - Flagged for removal.
-//    public User getUserByID(int id) {
-//        return em.find(User.class, id);
-//    }
-//
-//    public User getUserByEmail(String emailaddress) {
-//        TypedQuery<User> query = em.createQuery(
-//                "SELECT u FROM User u WHERE u.emailaddress = :firstarg", User.class
-//        );
-//        query.setParameter("firstarg", emailaddress);
-//        return query.getSingleResult();
-//    }
 
     public User getUserByEmailAndPassword(String emailaddress, String password) {
         TypedQuery<User> query = em.createQuery(

@@ -1,6 +1,5 @@
 package BDExchange.System;
 
-import BDExchange.Domain.DeliveryOptions;
 import BDExchange.Domain.User;
 
 import java.util.HashMap;
@@ -14,27 +13,21 @@ public class StateManager {
 
     public void initialize() {
         // initialize all states
-        WelcomeState welcomeState = new WelcomeState( this,"Login", "Register", "Exit");
-
-        RegisterState registerState = new RegisterState(this,
-                DeliveryOptions.values()[0].name(),
-                DeliveryOptions.values()[1].name(),
-                DeliveryOptions.values()[2].name(),
-                DeliveryOptions.values()[3].name());
-
+        HomeState homeState = new HomeState( this,"Login", "Register", "Exit");
+        RegisterState registerState = new RegisterState(this);
         ExitState exitState = new ExitState(this);
-        LoginState loginState = new LoginState(this, "LoggedOnState");
+        LoginState loginState = new LoginState(this);
         LoggedOnState loggedonState = new LoggedOnState(this, "Products", "Wishlist");
 
         // Map options to states
-        addToMap("Welcome", welcomeState);
+        addToMap("Home", homeState);
         addToMap("Register", registerState);
         addToMap("Exit", exitState);
         addToMap("Login", loginState);
         addToMap("LoggedOnState", loggedonState);
 
         // Set first state to welcome state
-        changeState(welcomeState);
+        changeState(homeState);
         updateState();
     }
 
