@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class UserDao {
     Logger log = LoggerFactory.getLogger(UserDao.class);
@@ -39,5 +40,10 @@ public class UserDao {
         query.setParameter("firstarg", emailaddress);
         query.setParameter("secondarg", password);
         return query.getSingleResult();
+    }
+
+    public List<User> getAll() {
+        TypedQuery<User> query = em.createQuery("select u from User u", User.class);
+        return query.getResultList();
     }
 }
