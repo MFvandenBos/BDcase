@@ -35,11 +35,4 @@ public class UserDaoIT {
         userDao.insert(new User());
         assertThat(userDao.getAll()).allMatch(e -> e.getId() != 0);
     }
-
-    // TODO test if email is valid
-    // TODO test if email is unique
-    // TODO test if email has a maximum length of 100 characters
-    // TODO test if deliveryOptions are LAZY loaded.
-
-    // TODO CRUD Test (Create, Read, Update, Delete)
 }
