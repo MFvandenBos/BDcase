@@ -33,13 +33,11 @@ public class RegisterState extends State{
             password = "password123";
             livingAddress = "";
 
-
             // TODO use batching to check if email already exists.
             log.warn("\nTo complete your registration you must select which delivery options you support.\n");
             selectedOptions = selectedDeliveryOptions();
 
             if(selectedOptions.contains(DeliveryOptions.AFHALENTHUIS)) {
-                log.error("THUIS AFHALEN DETECTED! ADD ADDRESS!");
                 log.warn("A home address is required when the " + DeliveryOptions.AFHALENTHUIS + " option is selected. ");
                 log.warn("Please input a home address.");
                 livingAddress = getInputString();
