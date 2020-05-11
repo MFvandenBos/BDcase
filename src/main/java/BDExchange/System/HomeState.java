@@ -9,6 +9,7 @@ public class HomeState extends State {
 
     @Override
     public void updateState() {
+        log.warn("----------Home----------");
         String selection = "";
         boolean selecting = true;
 
@@ -27,11 +28,11 @@ public class HomeState extends State {
                     changeState(selection);
                 }
             } catch(NumberFormatException numberFormatException) {
-                log.error("Please input a number.");
+                log.error("\nPlease input a number.");
             } catch(ArrayIndexOutOfBoundsException arrayIndexOutOfBoundsException) {
-                log.error("Not a valid option. Please select an option from the list.");
+                log.error("\nNot a valid option. Please select an option from the list.");
             } catch (Exception e) {
-                log.error("An error has occurred while selecting an option.");
+                log.error("\nAn error has occurred while selecting an option.");
             }
         }
     }

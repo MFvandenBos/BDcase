@@ -20,8 +20,9 @@ public class LoginState extends State {
         String emailAddress;
         String password;
 
+        log.warn("----------Login----------");
         while(loggingIn) {
-            log.warn("\nPlease enter your email address.");
+            log.warn("Please enter your email address.");
             emailAddress = getInputString();
             log.warn("Please enter your password. Note that passwords are case-sensitive.");
             password = getInputString();

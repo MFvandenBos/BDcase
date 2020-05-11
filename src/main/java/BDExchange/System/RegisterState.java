@@ -27,6 +27,7 @@ public class RegisterState extends State{
         String livingAddress;
         List<DeliveryOptions> selectedOptions;
 
+        log.warn("----------Register----------");
         while(selecting) {
             log.warn("\nPlease enter a valid email address for your user account:");
             emailAddress = getInputString();
@@ -64,6 +65,7 @@ public class RegisterState extends State{
         boolean selectingAnotherOption = true;
 
         while(selectingDeliveryOptions) {
+            selectingAnotherOption = true;
             log.warn("\nPlease select the number of a delivery option to add it your list.");
             showNumberedDeliveryOptions();
 
@@ -89,6 +91,7 @@ public class RegisterState extends State{
                                 selection = getInputInteger();
                                 switch (selection) {
                                     case 1:
+                                        selectingAnotherOption = false;
                                         break;
                                     case 2:
                                         selectingAnotherOption = false;
